@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabulous - Contato | Fale Conosco</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="https://via.placeholder.com/32/FF6600/FFFFFF?text=F" type="image/x-icon">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #000; color: white; }
+        
+        .hero-bg {
+            background: linear-gradient(180deg, #000000 0%, #1a0f00 50%, #000000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 60% 40%, #ff6600 0%, #ff2200 30%, transparent 70%);
+            opacity: 0.6; animation: explosion 12s infinite alternate ease-in-out;
+        }
+        @keyframes explosion { 0% { transform: scale(1) rotate(0deg); opacity: 0.6; } 100% { transform: scale(1.12) rotate(2deg); opacity: 0.8; } }
+
+        .contact-card {
+            background: #18181b;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(255, 102, 0, 0.15);
+        }
+        .input-dark {
+            background: #111;
+            border: 1px solid #444;
+            color: white;
+        }
+        .input-dark:focus {
+            border-color: #ff6600;
+            box-shadow: 0 0 0 3px rgba(255,102,0,0.2);
+        }
+        .nav-link { position: relative; transition: all 0.3s; }
+        .nav-link:after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #ff6600; transition: width 0.3s; }
+        .nav-link:hover:after { width: 100%; }
+        .logo-box { background: linear-gradient(135deg, #ff6600, #ff8800); box-shadow: 0 0 25px rgba(255, 102, 0, 0.6); }
+
+        .map-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+            border-radius: 1.5rem;
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+
+    <!-- NAVBAR (inalterado) -->
+    <nav class="bg-zinc-950 border-b border-zinc-800 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="logo-box px-5 py-2 rounded-lg flex items-center gap-2 cursor-pointer">
+                    <span class="text-white text-3xl font-black tracking-tighter">F</span>
+                    <span class="text-white text-3xl font-black tracking-tighter">abulous</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1v-5m10-10l2 2m-2-2v10a1 1 0 01-1 1v-5m-6 0a1 1 0 001-1v5" />
+                    </svg>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
+                <a href="index.html" class="nav-link text-white hover:text-orange-400">HOME</a>
+                <a href="pages.html" class="nav-link text-white hover:text-orange-400">PAGES</a>
+                <a href="shop.html" class="nav-link text-white hover:text-orange-400">SHOP</a>
+                <a href="blog.html" class="nav-link text-white hover:text-orange-400">BLOG</a>
+                <a href="contact.html" class="nav-link text-orange-400">CONTACT US</a>
+                <a href="sobre.html" class="nav-link text-white hover:text-orange-400">SOBRE</a>
+            </div>
+            
+            <div class="flex items-center gap-3 sm:gap-6 text-sm">
+                <div class="hidden sm:flex items-center gap-1 cursor-pointer hover:text-orange-400">
+                    <span class="text-base">🇬🇧</span><span class="font-medium">ENGLISH</span><i class="fas fa-chevron-down text-xs"></i>
+                </div>
+                <div class="hidden sm:flex items-center gap-1 cursor-pointer hover:text-orange-400">
+                    <span class="font-medium">$</span><span class="font-medium">CURRENCY</span><i class="fas fa-chevron-down text-xs"></i>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-4 text-lg">
+                    <a href="https://facebook.com/fabulousrunning" target="_blank" class="hover:text-orange-400"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/fabulousrun" target="_blank" class="hover:text-orange-400"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/fabulousrunning" target="_blank" class="hover:text-orange-400"><i class="fab fa-instagram"></i></a>
+                </div>
+                <div class="hidden lg:flex items-center gap-5 text-xs font-medium">
+                    <a href="#" class="hover:text-orange-400">My Account</a>
+                    <a href="cart.html" class="hover:text-orange-400">Carrinho</a>
+                    <a href="checkout.html" class="hover:text-orange-400">Checkout</a>
+                    <a href="#" class="hover:text-orange-400">Sign In</a>
+                </div>
+                <button onclick="alert('Busca ativada! (demo)')" class="text-xl hover:text-orange-400"><i class="fas fa-search"></i></button>
+                <a href="cart.html" class="relative cursor-pointer flex items-center gap-1 hover:text-orange-400">
+                    <i class="fas fa-shopping-cart text-2xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-orange-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900">
+            <div class="bg-orange-500 py-6 px-6 flex items-center justify-between">
+                <div onclick="window.location.href='index.html'" class="flex items-center gap-2 text-white font-black text-3xl cursor-pointer">
+                    F abulous <i class="fas fa-home text-3xl"></i>
+                </div>
+                <div class="flex items-center gap-5 text-white text-2xl">
+                    <a href="https://facebook.com/fabulousrunning" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/fabulousrun" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/fabulousrunning" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="px-6 py-8 flex flex-col gap-5 text-sm font-medium">
+                <a href="index.html" class="py-2 border-b border-zinc-700">HOME</a>
+                <a href="pages.html" class="py-2 border-b border-zinc-700">PAGES</a>
+                <a href="shop.html" class="py-2 border-b border-zinc-700">SHOP</a>
+                <a href="blog.html" class="py-2 border-b border-zinc-700">BLOG</a>
+                <a href="contact.html" class="py-2 border-b border-zinc-700 text-orange-400">CONTACT US</a>
+                <a href="cart.html" class="py-2 border-b border-zinc-700">Carrinho</a>
+                <a href="sobre.html" class="py-2 border-b border-zinc-700">SOBRE</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO DA PÁGINA DE CONTATO -->
+    <section class="hero-bg h-[60vh] relative flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10">
+            <h1 class="text-orange-500 text-[clamp(3rem,10vw,6rem)] font-black tracking-[-4px] mb-4">FALE CONOSCO</h1>
+            <p class="text-xl md:text-2xl font-light text-white max-w-3xl mx-auto">
+                Estamos aqui para ajudar! Envie sua mensagem, dúvida ou sugestão.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <section class="bg-zinc-950 py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Formulário de Contato -->
+                <div class="contact-card">
+                    <h2 class="text-3xl font-bold text-orange-500 mb-8">Envie sua mensagem</h2>
+                    <form id="contactForm" class="space-y-6">
+                        <input type="text" class="input-dark w-full px-5 py-4 rounded-2xl" placeholder="Seu nome" required>
+                        <input type="email" class="input-dark w-full px-5 py-4 rounded-2xl" placeholder="Seu e-mail" required>
+                        <input type="tel" class="input-dark w-full px-5 py-4 rounded-2xl" placeholder="Seu telefone (opcional)">
+                        <textarea class="input-dark w-full px-5 py-4 rounded-2xl h-40" placeholder="Sua mensagem..." required></textarea>
+                        
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 py-5 rounded-3xl text-xl font-semibold transition">
+                            Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Informações de Contato -->
+                <div class="space-y-10">
+                    <div class="contact-card">
+                        <h3 class="text-2xl font-bold mb-6">Informações de Contato</h3>
+                        <ul class="space-y-4 text-lg">
+                            <li class="flex items-center gap-4">
+                                <i class="fas fa-map-marker-alt text-orange-400 text-2xl"></i>
+                                <span>Botucatu, São Paulo - Brasil</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <i class="fas fa-phone-alt text-orange-400 text-2xl"></i>
+                                <span>(14) 99999-9999</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <i class="fas fa-envelope text-orange-400 text-2xl"></i>
+                                <span>contato@fabulous.com.br</span>
+                            </li>
+                            <li class="flex items-center gap-4">
+                                <i class="fas fa-clock text-orange-400 text-2xl"></i>
+                                <span>Segunda a Sexta: 9h às 18h</span>
+                            </li>
+                        </ul>
+
+                        <!-- ENDEREÇO COMPLETO + GOOGLE MAPS -->
+                        <div class="mt-8">
+                            <h4 class="text-xl font-bold mb-4 text-orange-400">Nosso Endereço</h4>
+                            <p class="text-lg mb-4">
+                                Rua Dr. José Ferreira de Camargo, 123 - Centro<br>
+                                Botucatu - SP, 18600-000<br>
+                                Brasil
+                            </p>
+                            <div class="map-container">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9999999999995!2d-48.44299999999999!3d-22.885!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c4c8f8f8f8f8f8%3A0x1234567890abcdef!2sR.+Dr.+Jos%C3%A9+Ferreira+de+Camargo%2C+123+-+Centro%2C+Botucatu+-+SP%2C+18600-000!5e0!3m2!1spt-BR!2sbr!4v1699999999999" 
+                                    allowfullscreen="" 
+                                    loading="lazy" 
+                                    referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-card">
+                        <h3 class="text-2xl font-bold mb-6">Redes Sociais</h3>
+                        <div class="flex gap-6 text-4xl">
+                            <a href="https://facebook.com/fabulousrunning" target="_blank" class="hover:text-orange-400 transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://twitter.com/fabulousrun" target="_blank" class="hover:text-orange-400 transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="https://instagram.com/fabulousrunning" target="_blank" class="hover:text-orange-400 transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://wa.me/5514999999999" target="_blank" class="hover:text-orange-400 transition">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER (atualizado apenas com links reais para as novas páginas) -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-12 text-center text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <p>© 2026 Fabulous - Loja de Tênis Running. Todos os direitos reservados.</p>
+            <div class="flex justify-center gap-8 mt-6 text-3xl">
+                <a href="https://facebook.com/fabulousrunning" target="_blank" class="hover:text-orange-400 transition">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/fabulousrun" target="_blank" class="hover:text-orange-400 transition">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://instagram.com/fabulousrunning" target="_blank" class="hover:text-orange-400 transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/5514999999999" target="_blank" class="hover:text-orange-400 transition">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <div class="mt-8 text-sm">
+                <a href="politica-privacidade.html" class="text-orange-400 hover:underline mx-2">Política de Privacidade</a> |
+                <a href="termos-uso.html" class="text-orange-400 hover:underline mx-2">Termos de Uso</a> |
+                <a href="trocas-devolucoes.html" class="text-orange-400 hover:underline mx-2">Trocas e Devoluções</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script (inalterado) -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! (demo)\nEm breve entraremos em contato.');
+            this.reset();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
+            });
+        });
+    </script>
+
+</body>
+</html>

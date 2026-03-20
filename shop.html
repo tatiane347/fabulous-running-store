@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabulous - Shop</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width='100' height='100' fill='%23ff6600' rx='20'/><text x='50' y='70' font-size='80' text-anchor='middle' fill='white' font-weight='bold'>F</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #000; color: white; }
+        .logo-box { background: linear-gradient(135deg, #ff6600, #ff8800); box-shadow: 0 0 25px rgba(255, 102, 0, 0.6); }
+        .product-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid #18181b; }
+        .product-card:hover { transform: translateY(-10px); border-color: #ff6600; box-shadow: 0 10px 30px rgba(255, 102, 0, 0.2); }
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
+    </style>
+</head>
+<body class="min-h-screen bg-black">
+
+    <!-- Navbar -->
+    <nav class="bg-zinc-950 border-b border-zinc-800 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="logo-box px-5 py-2 rounded-lg cursor-pointer">
+                    <span class="text-white text-3xl font-black tracking-tighter italic">Fabulous</span>
+                </div>
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
+                <a href="index.html" class="text-white hover:text-orange-400">HOME</a>
+                <a href="shop.html" class="text-orange-400">SHOP</a>
+                <a href="contact.html" class="text-white hover:text-orange-400">CONTACT</a>
+            </div>
+
+            <div class="flex items-center gap-4 sm:gap-6">
+                <!-- Cart Icon -->
+                <a href="cart.html" class="relative text-white hover:text-orange-400">
+                    <i class="fas fa-shopping-cart text-2xl"></i>
+                    <span id="cart-count-nav" class="absolute -top-2 -right-2 bg-orange-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </a>
+                
+                <!-- Hamburger Button (Mobile) -->
+                <button id="menu-btn" class="md:hidden text-white text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="fixed inset-y-0 left-0 w-64 bg-zinc-950 transform -translate-x-full z-50 shadow-2xl border-r border-zinc-800 md:hidden">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-10">
+                    <span class="text-orange-500 font-black text-2xl italic">MENU</span>
+                    <button id="close-btn" class="text-white text-2xl">&times;</button>
+                </div>
+                <div class="flex flex-col gap-6 text-lg font-bold">
+                    <a href="index.html" class="text-white hover:text-orange-500 transition-colors">HOME</a>
+                    <a href="shop.html" class="text-orange-500">SHOP</a>
+                    <a href="contact.html" class="text-white hover:text-orange-500 transition-colors">CONTACT</a>
+                </div>
+            </div>
+        </div>
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black opacity-50 hidden z-40"></div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+        <h1 class="text-5xl font-black text-center mb-16 italic tracking-tighter">OUR <span class="text-orange-500 underline">COLLECTION</span></h1>
+        
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <!-- Os 12 Tênis via JS -->
+        </div>
+    </div>
+
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center text-gray-500">
+            © 2026 Fabulous - Tatiane Souza 🤑 - Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu Logic
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.style.transform = 'translateX(0)';
+            overlay.classList.remove('hidden');
+        });
+
+        const closeMenu = () => {
+            mobileMenu.style.transform = 'translateX(-100%)';
+            overlay.classList.add('hidden');
+        };
+
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Products Logic
+        const products = [
+            { id: 1, name: "Nike Pegasus 41", price: 139, img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" },
+            { id: 2, name: "Adidas Ultraboost", price: 159, img: "https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=80" },
+            { id: 3, name: "Jordan Retro 1", price: 199, img: "https://images.unsplash.com/photo-1584735175315-9d5df23860e6?auto=format&fit=crop&w=800&q=80" },
+            { id: 4, name: "Yeezy Boost 350", price: 220, img: "https://images.unsplash.com/photo-1586525198428-225f6f12cff5?auto=format&fit=crop&w=800&q=80" },
+            { id: 5, name: "New Balance 9060", price: 145, img: "https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800&q=80" },
+            { id: 6, name: "Puma RS-X Black", price: 110, img: "1774009702789.png" },
+            { id: 7, name: "Asics Gel-Kayano", price: 160, img: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80" },
+            { id: 8, name: "Converse Chuck 70", price: 85, img: "1774009853791.png" },
+            { id: 9, name: "Vans Old Skool", price: 75, img: "https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80" },
+            { id: 10, name: "Nike Air Max 270", price: 150, img: "https://images.unsplash.com/photo-1514989940723-e8e51635b782?auto=format&fit=crop&w=800&q=80" },
+            { id: 11, name: "Reebok Classic", price: 95, img: "1774009937342.png" },
+            { id: 12, name: "Nike Dunk Low", price: 115, img: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=800&q=80" }
+        ];
+
+        function renderProducts() {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = products.map(p => `
+                <div class="product-card bg-zinc-900 rounded-3xl p-5 group flex flex-col justify-between">
+                    <div class="relative overflow-hidden rounded-2xl aspect-square mb-6">
+                        <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">${p.name}</h3>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="text-2xl font-black text-orange-500">$${p.price}</span>
+                            <button onclick="addToCart(${p.id})" class="bg-white text-black px-6 py-2 rounded-full font-bold hover:bg-orange-500 hover:text-white transition-colors">
+                                ADD
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const existing = cart.find(item => item.id === productId);
+            if (existing) { existing.qty += 1; } else { cart.push({ ...product, qty: 1 }); }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateNavCount();
+        }
+
+        function updateNavCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((acc, item) => acc + item.qty, 0);
+            document.getElementById('cart-count-nav').innerText = totalItems;
+        }
+
+        window.onload = () => { renderProducts(); updateNavCount(); };
+    </script>
+</body>
+</html>
+

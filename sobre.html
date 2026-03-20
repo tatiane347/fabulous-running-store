@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabulous - Sobre Nós | Running Sneakers</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width='100' height='100' fill='%23ff6600' rx='20'/><text x='50' y='70' font-size='80' text-anchor='middle' fill='white' font-weight='bold'>F</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background: #000; color: white; }
+        
+        .hero-bg {
+            background: linear-gradient(180deg, #000000 0%, #1a0f00 50%, #000000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 60% 40%, #ff6600 0%, #ff2200 30%, transparent 70%);
+            opacity: 0.85; animation: explosion 8s infinite alternate ease-in-out;
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 30% 70%, #ffaa00 0%, transparent 60%);
+            opacity: 0.6; animation: explosion2 10s infinite alternate ease-in-out;
+        }
+        @keyframes explosion { 0% { transform: scale(1) rotate(0deg); opacity: 0.85; } 100% { transform: scale(1.15) rotate(3deg); opacity: 0.95; } }
+        @keyframes explosion2 { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.08) rotate(-2deg); } }
+        
+        .particle { 
+            position: absolute; 
+            background: #ff8800; 
+            border-radius: 50%; 
+            animation: particle-float 4s infinite linear; 
+            box-shadow: 0 0 20px #ffaa00; 
+        }
+        @keyframes particle-float { 
+            0% { transform: translateY(0); } 
+            50% { transform: translateY(-30px); } 
+            100% { transform: translateY(0); } 
+        }
+        
+        .shoe-float { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .nav-link { position: relative; transition: all 0.3s; }
+        .nav-link:after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #ff6600; transition: width 0.3s; }
+        .nav-link:hover:after { width: 100%; }
+        .logo-box { background: linear-gradient(135deg, #ff6600, #ff8800); box-shadow: 0 0 25px rgba(255, 102, 0, 0.6); }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    
+    <!-- NAVBAR (igual às outras páginas) -->
+    <nav class="bg-zinc-950 border-b border-zinc-800 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="logo-box px-5 py-2 rounded-lg flex items-center gap-2 cursor-pointer">
+                    <span class="text-white text-3xl font-black tracking-tighter">F</span>
+                    <span class="text-white text-3xl font-black tracking-tighter">abulous</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1v-5m10-10l2 2m-2-2v10a1 1 0 01-1 1v-5m-6 0a1 1 0 001-1v5" />
+                    </svg>
+                </div>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
+                <a href="index.html" class="nav-link text-white hover:text-orange-400">HOME</a>
+                <a href="pages.html" class="nav-link text-white hover:text-orange-400">PAGES</a>
+                <a href="shop.html" class="nav-link text-white hover:text-orange-400">SHOP</a>
+                <a href="blog.html" class="nav-link text-white hover:text-orange-400">BLOG</a>
+                <a href="contact.html" class="nav-link text-white hover:text-orange-400">CONTACT US</a>
+                <a href="sobre.html" class="nav-link text-orange-400">SOBRE</a>
+            </div>
+            
+            <div class="flex items-center gap-3 sm:gap-6 text-sm">
+                <div class="hidden sm:flex items-center gap-1 cursor-pointer hover:text-orange-400">
+                    <span class="text-base">🇬🇧</span><span class="font-medium">ENGLISH</span><i class="fas fa-chevron-down text-xs"></i>
+                </div>
+                <div class="hidden sm:flex items-center gap-1 cursor-pointer hover:text-orange-400">
+                    <span class="font-medium">$</span><span class="font-medium">CURRENCY</span><i class="fas fa-chevron-down text-xs"></i>
+                </div>
+                <div class="flex items-center gap-3 sm:gap-4 text-lg">
+                    <i class="fab fa-facebook-f hover:text-orange-400 cursor-pointer"></i>
+                    <i class="fab fa-twitter hover:text-orange-400 cursor-pointer"></i>
+                    <i class="fab fa-instagram hover:text-orange-400 cursor-pointer"></i>
+                </div>
+                <div class="hidden lg:flex items-center gap-5 text-xs font-medium">
+                    <a href="#" class="hover:text-orange-400">My Account</a>
+                    <a href="#" class="hover:text-orange-400">Checkout</a>
+                    <a href="#" class="hover:text-orange-400">Sign In</a>
+                </div>
+                <button onclick="alert('Busca ativada! (demo)')" class="text-xl hover:text-orange-400"><i class="fas fa-search"></i></button>
+                <div onclick="alert('Carrinho aberto! (demo)')" class="relative cursor-pointer flex items-center gap-1 hover:text-orange-400">
+                    <i class="fas fa-shopping-cart text-2xl"></i>
+                    <span class="absolute -top-1 -right-1 bg-orange-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+        
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900">
+            <div class="bg-orange-500 py-6 px-6 flex items-center justify-between">
+                <div onclick="window.location.href='index.html'" class="flex items-center gap-2 text-white font-black text-3xl cursor-pointer">
+                    F abulous <i class="fas fa-home text-3xl"></i>
+                </div>
+                <div class="flex items-center gap-5 text-white text-2xl">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+            </div>
+            <div class="px-6 py-8 flex flex-col gap-5 text-sm font-medium">
+                <a href="index.html" class="py-2 border-b border-zinc-700">HOME</a>
+                <a href="pages.html" class="py-2 border-b border-zinc-700">PAGES</a>
+                <a href="shop.html" class="py-2 border-b border-zinc-700">SHOP</a>
+                <a href="blog.html" class="py-2 border-b border-zinc-700">BLOG</a>
+                <a href="contact.html" class="py-2 border-b border-zinc-700">CONTACT US</a>
+                <a href="sobre.html" class="py-2 border-b border-zinc-700 text-orange-400">SOBRE</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- HERO SOBRE -->
+    <section class="hero-bg h-[80vh] md:h-screen relative flex items-center">
+        <div class="particle w-3 h-3 top-20 left-1/4" style="animation-delay: 0s;"></div>
+        <div class="particle w-2 h-2 top-40 right-1/3" style="animation-delay: 1.2s;"></div>
+        <div class="particle w-4 h-4 bottom-32 left-1/3" style="animation-delay: 2.5s;"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full relative z-10">
+            <div class="lg:pt-20">
+                <h1 class="text-orange-500 text-[clamp(3rem,10vw,6.5rem)] leading-none font-black tracking-[-6px] mb-4">SOBRE NÓS</h1>
+                <p class="text-[clamp(1.5rem,5vw,2.5rem)] font-light text-white tracking-tight mb-6">
+                    Corra com paixão. Corra com Fabulous.
+                </p>
+                <p class="text-lg md:text-xl text-white/80 max-w-2xl">
+                    Somos apaixonados por corrida e por levar o melhor do running para corredores de todos os níveis. Cada tênis que vendemos carrega performance, conforto e estilo.
+                </p>
+                <a href="shop.html" class="mt-10 inline-block bg-orange-500 hover:bg-orange-600 px-10 py-5 rounded-3xl text-xl font-semibold transition">
+                    Conheça nossa coleção →
+                </a>
+            </div>
+            
+            <div class="relative flex justify-center lg:justify-end">
+                <img src="1773958124255.png" 
+                     alt="Corredores apaixonados" 
+                     class="shoe-float w-full max-w-[clamp(300px,70vw,700px)] rounded-3xl shadow-2xl">
+                <div class="absolute -inset-20 bg-orange-500 blur-3xl opacity-30 rounded-full -z-10"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÕES SOBRE -->
+    <section class="bg-zinc-950 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-20">
+            <!-- Missão -->
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-black text-orange-500 mb-6">Nossa Missão</h2>
+                    <p class="text-lg text-white/80 leading-relaxed">
+                        Inspirar e equipar corredores com tênis de alta performance que unem tecnologia avançada, conforto extremo e design moderno. Acreditamos que cada passo conta — seja na primeira corrida de 5 km ou em uma maratona.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=800&q=80" 
+                         alt="Corredor em ação" class="rounded-3xl shadow-2xl w-full max-w-md mx-auto">
+                </div>
+            </div>
+
+            <!-- Valores -->
+            <div class="text-center">
+                <h2 class="text-4xl md:text-5xl font-black text-orange-500 mb-12">Nossos Valores</h2>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-zinc-900 p-8 rounded-3xl">
+                        <i class="fas fa-heart text-5xl text-orange-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-4">Paixão pela Corrida</h3>
+                        <p class="text-white/70">Vivemos e respiramos running todos os dias.</p>
+                    </div>
+                    <div class="bg-zinc-900 p-8 rounded-3xl">
+                        <i class="fas fa-shield-alt text-5xl text-orange-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-4">Qualidade em Primeiro Lugar</h3>
+                        <p class="text-white/70">Selecionamos apenas marcas e modelos testados e aprovados.</p>
+                    </div>
+                    <div class="bg-zinc-900 p-8 rounded-3xl">
+                        <i class="fas fa-users text-5xl text-orange-400 mb-6"></i>
+                        <h3 class="text-2xl font-bold mb-4">Comunidade</h3>
+                        <p class="text-white/70">Conectamos corredores através de dicas, eventos e histórias.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- História -->
+            <div class="bg-zinc-900 rounded-3xl p-10 md:p-16 text-center">
+                <h2 class="text-4xl md:text-5xl font-black text-orange-500 mb-8">Nossa História</h2>
+                <p class="text-lg md:text-xl text-white/80 max-w-4xl mx-auto leading-relaxed">
+                    Fundada em 2024 em Botucatu-SP, a Fabulous nasceu da paixão de corredores que não encontravam no mercado brasileiro opções que unissem performance de ponta com preço justo e estilo atual. Começamos com poucos modelos e hoje somos referência em tênis de corrida premium, entregando em todo o Brasil com carinho e rapidez.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RODAPÉ (atualizado com links reais de suporte) -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-12 text-center text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <h3 class="text-xl font-bold text-orange-500 mb-4">Fabulous</h3>
+                    <p class="text-gray-400">Tênis de corrida premium para quem corre com estilo e performance.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="hover:text-orange-400 transition">Home</a></li>
+                        <li><a href="shop.html" class="hover:text-orange-400 transition">Shop</a></li>
+                        <li><a href="blog.html" class="hover:text-orange-400 transition">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400 transition">Contato</a></li>
+                        <li><a href="sobre.html" class="hover:text-orange-400 transition">Sobre</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Suporte</h4>
+                    <ul class="space-y-2">
+                        <li><a href="politica-privacidade.html" class="hover:text-orange-400 transition">Política de Privacidade</a></li>
+                        <li><a href="termos-uso.html" class="hover:text-orange-400 transition">Termos de Uso</a></li>
+                        <li><a href="trocas-devolucoes.html" class="hover:text-orange-400 transition">Trocas e Devoluções</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400 transition">Fale Conosco</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4 text-white">Redes Sociais</h4>
+                    <div class="flex justify-center md:justify-start gap-6 text-3xl">
+                        <a href="https://facebook.com/fabulousrunning" target="_blank" class="hover:text-orange-400 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://twitter.com/fabulousrun" target="_blank" class="hover:text-orange-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="https://instagram.com/fabulousrunning" target="_blank" class="hover:text-orange-400 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center border-t border-zinc-800 pt-8 mt-8">
+                <p>© 2026 Fabulous - Desenvolvido Por Tatiane Souza 🤑🤑-Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                const icon = menuBtn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-xmark');
+            });
+            
+            const shoe = document.getElementById('hero-shoe');
+            setTimeout(() => { shoe.style.transform = 'rotate(-18deg) scale(1.02)'; }, 800);
+        });
+    </script>
+</body>
+</html>

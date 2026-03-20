@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabulous - Running Sneakers</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width='100' height='100' fill='%23ff6600' rx='20'/><text x='50' y='70' font-size='80' text-anchor='middle' fill='white' font-weight='bold'>F</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        
+        .hero-bg {
+            background: linear-gradient(180deg, #000000 0%, #1a0f00 50%, #000000 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 60% 40%, #ff6600 0%, #ff2200 30%, transparent 70%);
+            opacity: 0.85; animation: explosion 8s infinite alternate ease-in-out;
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 30% 70%, #ffaa00 0%, transparent 60%);
+            opacity: 0.6; animation: explosion2 10s infinite alternate ease-in-out;
+        }
+        @keyframes explosion { 0% { transform: scale(1) rotate(0deg); opacity: 0.85; } 100% { transform: scale(1.15) rotate(3deg); opacity: 0.95; } }
+        @keyframes explosion2 { 0% { transform: scale(1) rotate(0deg); } 100% { transform: scale(1.08) rotate(-2deg); } }
+        
+        .particle { position: absolute; background: #ff8800; border-radius: 50%; animation: particle-float 4s infinite linear; box-shadow: 0 0 20px #ffaa00; }
+        @keyframes particle-float { 0% { transform: translateY(0); } 50% { transform: translateY(-30px); } 100% { transform: translateY(0); } }
+        
+        .shoe-float { transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .nav-link { position: relative; transition: all 0.3s; }
+        .nav-link:after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: #ff6600; transition: width 0.3s; }
+        .nav-link:hover:after { width: 100%; }
+        .logo-box { background: linear-gradient(135deg, #ff6600, #ff8800); box-shadow: 0 0 25px rgba(255, 102, 0, 0.6); }
+
+        .cart-item { transition: all 0.3s; }
+        .cart-item:hover { background: #27272a; }
+        .modal-content { background: #18181b; border: none; }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        .whatsapp-float a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        .whatsapp-float a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(37,213,102,0.4);
+        }
+
+        #searchDropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: #18181b;
+            border: 1px solid #444;
+            border-radius: 1rem;
+            width: 320px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden relative">
+
+    <!-- TOP NAV BAR -->
+    <nav class="bg-zinc-950 border-b border-zinc-800 py-3 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+            
+            <!-- LOGO -->
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="logo-box px-5 py-2 rounded-lg flex items-center gap-2 cursor-pointer">
+                    <span class="text-white text-3xl font-black tracking-tighter">F</span>
+                    <span class="text-white text-3xl font-black tracking-tighter">abulous</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1v-5m10-10l2 2m-2-2v10a1 1 0 01-1 1v-5m-6 0a1 1 0 001-1v5" />
+                    </svg>
+                </div>
+            </a>
+            
+            <!-- MENU DESKTOP -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium uppercase tracking-widest">
+                <a href="index.html" class="nav-link text-white hover:text-orange-400">HOME</a>
+                <a href="pages.html" class="nav-link text-white hover:text-orange-400">PAGES</a>
+                <a href="shop.html" class="nav-link text-white hover:text-orange-400">SHOP</a>
+                <a href="blog.html" class="nav-link text-white hover:text-orange-400">BLOG</a>
+                <a href="contact.html" class="nav-link text-white hover:text-orange-400">CONTACT US</a>
+                <a href="sobre.html" class="nav-link text-white hover:text-orange-400">SOBRE</a>
+            </div>
+            
+            <!-- RIGHT SIDE -->
+            <div class="flex items-center gap-3 sm:gap-6 text-sm">
+                <!-- LANGUAGE DROPDOWN -->
+                <div class="hidden sm:flex items-center gap-1 cursor-pointer hover:text-orange-400 relative group">
+                    <span class="text-base">🇬🇧</span>
+                    <span class="font-medium">ENGLISH</span>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                    <div class="absolute top-full right-0 mt-2 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl w-48 py-2 hidden group-hover:block z-50">
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">🇧🇷 Português (BR)</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">🇪🇸 Español</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">🇫🇷 Français</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">🇩🇪 Deutsch</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">🇮🇹 Italiano</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">🇷🇺 Русский</a>
+                    </div>
+                </div>
+
+                <!-- CURRENCY DROPDOWN -->
+                <div class="hidden sm:flex items-center gap-1 cursor-pointer hover:text-orange-400 relative group">
+                    <span class="font-medium">$</span>
+                    <span class="font-medium">CURRENCY</span>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                    <div class="absolute top-full right-0 mt-2 bg-zinc-900 border border-zinc-700 rounded-xl shadow-2xl w-64 py-2 hidden group-hover:block z-50 max-h-80 overflow-y-auto">
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">USD - Dólar Americano ($)</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">BRL - Real Brasileiro (R$)</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">EUR - Euro (€)</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">GBP - Libra Esterlina (£)</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">JPY - Iene Japonês (¥)</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">CAD - Dólar Canadense (C$)</a>
+                        <a href="#" class="block px-4 py-2 hover:bg-zinc-800">AUD - Dólar Australiano (A$)</a>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-3 sm:gap-4 text-lg">
+                    <a href="https://facebook.com/fabulousrunning" target="_blank" class="hover:text-orange-400"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/fabulousrun" target="_blank" class="hover:text-orange-400"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/fabulousrunning" target="_blank" class="hover:text-orange-400"><i class="fab fa-instagram"></i></a>
+                </div>
+
+                <div class="hidden lg:flex items-center gap-5 text-xs font-medium">
+                    <a href="minha-conta.html" class="hover:text-orange-400" id="myAccountLink">Minha Conta</a>
+                    <a onclick="openCheckoutModal()" class="hover:text-orange-400 cursor-pointer">Checkout</a>
+                    <a href="login.html" class="hover:text-orange-400" id="loginLink">Entrar</a>
+                    <a href="cadastro.html" class="hover:text-orange-400" id="cadastroLink">Criar Conta</a>
+                </div>
+
+                <!-- BUSCA COM DROPDOWN -->
+                <div class="relative">
+                    <button id="searchBtn" class="text-xl hover:text-orange-400">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <div id="searchDropdown" class="p-4">
+                        <input type="text" id="searchInput" class="w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-orange-500" placeholder="Buscar tênis, marca...">
+                        <div id="searchResults" class="mt-3 text-sm text-gray-300 max-h-60 overflow-y-auto"></div>
+                    </div>
+                </div>
+
+                <!-- CARRINHO -->
+                <a href="cart.html" class="relative cursor-pointer flex items-center gap-1 hover:text-orange-400">
+                    <i class="fas fa-shopping-cart text-2xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-orange-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full">2</span>
+                </a>
+
+                <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- MOBILE MENU -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-900 py-6 px-6 border-b border-zinc-800">
+            <div class="flex flex-col gap-5 text-sm font-medium">
+                <a href="index.html" class="py-2 border-b border-zinc-700">HOME</a>
+                <a href="pages.html" class="py-2 border-b border-zinc-700">PAGES</a>
+                <a href="shop.html" class="py-2 border-b border-zinc-700">SHOP</a>
+                <a href="blog.html" class="py-2 border-b border-zinc-700">BLOG</a>
+                <a href="contact.html" class="py-2 border-b border-zinc-700">CONTACT US</a>
+                <a href="sobre.html" class="py-2 border-b border-zinc-700">SOBRE</a>
+                <a href="minha-conta.html" class="py-2 border-b border-zinc-700 text-orange-400" id="mobileMyAccountLink" style="display:none;">Minha Conta</a>
+                <a href="login.html" class="py-2 border-b border-zinc-700" id="mobileLoginLink">Entrar</a>
+                <a href="cadastro.html" class="py-2 border-b border-zinc-700" id="mobileCadastroLink">Criar Conta</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero-bg h-screen relative flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full relative z-10">
+            <div class="lg:pt-20">
+                <h1 class="text-orange-500 text-[clamp(3.5rem,12vw,7.5rem)] leading-none font-black tracking-[-6px] mb-2">New</h1>
+                <div class="space-y-1">
+                    <p class="text-[clamp(1.75rem,5vw,3rem)] font-light text-white tracking-tight">Running Sneakers</p>
+                    <p class="text-[clamp(1.75rem,5vw,3rem)] font-light text-white tracking-tight">Men's like asics</p>
+                </div>
+                <a href="shop.html">
+                    <button class="mt-10 lg:mt-14 bg-orange-500 hover:bg-orange-600 transition-all px-8 sm:px-12 py-5 rounded-3xl text-xl font-semibold flex items-center gap-3 group">
+                        Shop Now
+                        <span class="text-2xl group-active:rotate-45 transition-transform">→</span>
+                    </button>
+                </a>
+            </div>
+            
+            <div class="relative flex justify-center lg:justify-end pt-12 lg:pt-0">
+                <img id="hero-shoe" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80" 
+                     alt="New Running Sneakers" class="shoe-float w-full max-w-[clamp(280px,65vw,620px)] drop-shadow-2xl rotate-[-8deg] md:rotate-[-12deg] lg:rotate-[-18deg]">
+                <div class="absolute -inset-20 bg-orange-500 blur-3xl opacity-30 rounded-full -z-10"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-12 left-12 text-white/70 text-sm font-medium tracking-widest hidden lg:block">
+            POWERED BY <span class="text-orange-400">EXPLOSIVE ENERGY</span>
+        </div>
+    </section>
+
+    <!-- WHATSAPP FLUTUANTE -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/5511910526709?text=Ol%C3%A1!%20Vi%20o%20site%20Fabulous%20e%20gostaria%20de%20falar%20sobre%20t%C3%AAnis%20de%20corrida." target="_blank">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </a>
+    </div>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-center md:text-left">
+                <div>
+                    <h3 class="text-xl font-bold text-orange-500 mb-4">Fabulous</h3>
+                    <p class="text-gray-400">Loja especializada em tênis de corrida de alta performance.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="index.html" class="hover:text-orange-400">Home</a></li>
+                        <li><a href="shop.html" class="hover:text-orange-400">Shop</a></li>
+                        <li><a href="blog.html" class="hover:text-orange-400">Blog</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400">Contato</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Suporte</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="politica-privacidade.html" class="hover:text-orange-400">Política de Privacidade</a></li>
+                        <li><a href="termos-uso.html" class="hover:text-orange-400">Termos de Uso</a></li>
+                        <li><a href="trocas-devolucoes.html" class="hover:text-orange-400">Trocas e Devoluções</a></li>
+                        <li><a href="contact.html" class="hover:text-orange-400">Fale Conosco</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Redes Sociais</h4>
+                    <div class="flex justify-center md:justify-start gap-6 text-2xl">
+                        <a href="https://facebook.com/fabulousrunning" target="_blank" class="hover:text-orange-400"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/fabulousrun" target="_blank" class="hover:text-orange-400"><i class="fab fa-twitter"></i></a>
+                        <a href="https://instagram.com/fabulousrunning" target="_blank" class="hover:text-orange-400"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 mt-10 border-t border-zinc-800 pt-8">
+                © 2026 Fabulous - Desenvolvido Por Tatiane Souza 🤑🤑. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (menuBtn && mobileMenu) {
+                menuBtn.onclick = function() {
+                    mobileMenu.classList.toggle('hidden');
+                    const icon = menuBtn.querySelector('i');
+                    if (icon) {
+                        icon.classList.toggle('fa-bars');
+                        icon.classList.toggle('fa-times');
+                    }
+                };
+            }
+            
+            const shoe = document.getElementById('hero-shoe');
+            if (shoe) {
+                setTimeout(() => { shoe.style.transform = 'rotate(-18deg) scale(1.02)'; }, 800);
+            }
+
+            let cartCount = 2;
+            function updateCartCount() {
+                const countEl = document.getElementById('cart-count');
+                if (countEl) countEl.textContent = cartCount;
+            }
+            updateCartCount();
+
+            window.openCheckoutModal = function() {
+                alert('Iniciando Checkout...');
+            };
+
+            const searchBtn = document.getElementById('searchBtn');
+            const searchDropdown = document.getElementById('searchDropdown');
+            const searchInput = document.getElementById('searchInput');
+
+            if (searchBtn && searchDropdown) {
+                searchBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    searchDropdown.style.display = searchDropdown.style.display === 'block' ? 'none' : 'block';
+                    if (searchDropdown.style.display === 'block') searchInput.focus();
+                });
+
+                document.addEventListener('click', (e) => {
+                    if (!searchBtn.contains(e.target) && !searchDropdown.contains(e.target)) {
+                        searchDropdown.style.display = 'none';
+                    }
+                });
+            }
+
+            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+            const userName = localStorage.getItem('userName') || 'Usuário';
+
+            if (isLoggedIn) {
+                if(document.getElementById('loginLink')) document.getElementById('loginLink').style.display = 'none';
+                if(document.getElementById('cadastroLink')) document.getElementById('cadastroLink').style.display = 'none';
+                const myAccount = document.getElementById('myAccountLink');
+                if (myAccount) {
+                    myAccount.textContent = `Olá, ${userName}`;
+                    myAccount.href = 'minha-conta.html';
+                }
+                if(document.getElementById('mobileLoginLink')) document.getElementById('mobileLoginLink').style.display = 'none';
+                if(document.getElementById('mobileCadastroLink')) document.getElementById('mobileCadastroLink').style.display = 'none';
+                if(document.getElementById('mobileMyAccountLink')) document.getElementById('mobileMyAccountLink').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
+
